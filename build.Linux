@@ -1,0 +1,35 @@
+CFLAGS=-m64 -c -fPIC -g -std=gnu99 -I../../heclib/headers -Werror=implicit-function-declaration -D_FORTIFY_SOURCE=2 -pipe -O2 
+
+
+# see debug info.
+set -x     
+ # -std=[c++03|c++11|c++14])
+
+INC=../../heclib/headers
+
+C_FLAGS="-m64 -fPIC -g -std=c++11 "
+
+#g++ -c  pch.h -I../../heclib/heclib/headers
+
+rm chainsaw *.o
+
+g++ -c ${C_FLAGS}  DssDatabase.cpp -I${INC}
+g++ -c ${C_FLAGS} chainsaw.cpp   -I${INC}
+g++ -c ${C_FLAGS} DssTest.cpp   -I${INC}
+g++ -c ${C_FLAGS}  pch.cpp  -I${INC}
+g++ -c ${C_FLAGS} TestingCenter.cpp -I${INC}
+
+cc -c ${C_FLAGS}  utility.c -I${INC}
+cc -c ${C_FLAGS}  SamplePairedData.c -I${INC}
+cc -c ${C_FLAGS}  SamplePairedDataDoubles.c -I${INC}
+cc -c ${C_FLAGS}  ts_write_irregular.c -I${INC}
+cc -c ${C_FLAGS}  SampleText1.cpp -I${INC}
+cc -c ${C_FLAGS}  workshop.c -I${INC}
+
+
+g++  ${C_FLAGS} *.o  ../../heclib/Output/heclib.a -o \
+   ./chainsaw -lz -lrt -lgfortran -lm 
+
+
+echo "./chainsaw test 6 read write"
+echo "./chainsaw test 7 read write"

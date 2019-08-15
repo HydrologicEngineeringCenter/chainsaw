@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -x
+ # -std=[c++03|c++11|c++14])
+
+INC=../heclib-dev/heclib/headers
+
+C="CC"
+CLFAGS="-m64 -std=c++14 "
+
+#g++ -c  pch.h -I../../heclib/heclib/headers
+
+
+${C} -c ${CLFAGS}  DssDatabase.cpp -I${INC}
+${C} -c ${CLFAGS} chainsaw.cpp   -I${INC}
+${C} -c ${CLFAGS} DssTest.cpp   -I${INC}
+${C} -c ${CLFAGS}  pch.cpp  -I${INC}
+${C} -c ${CLFAGS} TestingCenter.cpp -I${INC}
+cc -c  -m64 ts_write_irregular.c -I${INC}
+${C} -c ${CLFAGS} SampleText1.cpp -I${INC}
+CC    ${CLFAGS} *.o  ../heclib-dev/heclib/Output/heclib.a  -lfsu  -lstdc++ -lsunmath
+

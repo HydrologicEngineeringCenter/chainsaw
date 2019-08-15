@@ -1,0 +1,12 @@
+
+test 7 read write
+
+tabulate c:\temp\test1.dss /a/b/c/01jan2001:1200/01jan2001:1300/f/
+tabulate c:\temp\windows\radar_utm.dss /UTM16N/PISTOL/PRECIP/05MAY2003:1100/05MAY2003:1200/RADAR/
+tabulate c:\temp\version7AlbersGrid.dss "/SHG/TRUCKEE RIVER/TEMP-AIR/31JAN2016:2400//INTERPOLATED-ROUNDED/"
+tabulate c:\temp\windows\ConnecticutGrids.dss "/SHG/CONNECTICUT/AIRTEMP/07MAY2019:1400//GAGEINTERP/"
+insert c:\temp\karl.dss /River/Q//IR-Century/test/  01/01/-10000  123.456 
+text-grid-to-dss c:\temp\mygrid.dss  c:\temp\grid.txt  /SGH/mygrid///// 
+#asc
+import-shef shef.dss TGC.A.Shef SHEFPARM  shfdsss shfdssp
+
