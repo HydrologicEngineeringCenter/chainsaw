@@ -3,7 +3,6 @@
 #include "DssDatabase.h"
 #include "heclib.h"
 #include <fstream>
-#include "Version.h"
 #include "DSSGrid.h"
 
 /*
