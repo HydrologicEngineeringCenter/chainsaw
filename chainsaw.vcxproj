@@ -99,18 +99,17 @@
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\heclib\headers;..\..\heclib\headers\zlib;..\..\heclib\grid;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\heclib\heclib\headers;..\heclib\heclib\headers\zlib;..\heclib\heclib\grid;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>
       </LanguageStandard>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
-      <SubSystem>
-      </SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\..\heclib\heclib_c_v6v7\$(Platform)\$(Configuration)\heclib_c_v6v7.lib;..\..\heclib\heclib_f_v6v7\$(Platform)\$(Configuration)\heclib_f_v6v7.lib;..\..\zlib\$(Platform)\zlibstatic.lib;..\..\heclib\grid\$(Platform)\$(Configuration)\grid.lib;..\..\nws_shef\$(Platform)\$(Configuration)\javaShefDssLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\heclib\heclib\heclib_c_v6v7\$(Platform)\$(Configuration)\heclib_c_v6v7.lib;..\heclib\heclib\heclib_f_v6v7\$(Platform)\$(Configuration)\heclib_f_v6v7.lib;..\heclib\zlib\$(Platform)\zlibstatic.lib;..\heclib\heclib\grid\$(Platform)\$(Configuration)\grid.lib;..\heclib\nws_shef\$(Platform)\$(Configuration)\javaShefDssLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(IFORT_COMPILER19)compiler\lib\intel64_win\</AdditionalLibraryDirectories>
-      <IgnoreSpecificDefaultLibraries>LIBCMTD</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>LIBCMTD;LIBCMT</IgnoreSpecificDefaultLibraries>
     </Link>
     <ProjectReference>
       <UseLibraryDependencyInputs>
@@ -126,12 +125,12 @@
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\heclib\headers;..\..\heclib\headers\zlib;..\..\heclib\grid;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\heclib\heclib\headers;..\heclib\heclib\headers\zlib;..\heclib\heclib\grid;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\..\heclib\heclib_c_v6v7\$(Platform)\$(Configuration)\heclib_c_v6v7.lib;..\..\heclib\heclib_f_v6v7\$(Platform)\$(Configuration)\heclib_f_v6v7.lib;..\..\zlib\$(Platform)\zlibstatic.lib;..\..\heclib\grid\$(Platform)\Debug\grid.lib;..\..\nws_shef\$(Platform)\$(Configuration)\javaShefDssLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\heclib\heclib\heclib_c_v6v7\$(Platform)\$(Configuration)\heclib_c_v6v7.lib;..\heclib\heclib\heclib_f_v6v7\$(Platform)\$(Configuration)\heclib_f_v6v7.lib;..\heclib\zlib\$(Platform)\zlibstatic.lib;..\heclib\heclib\grid\$(Platform)\$(Configuration)\grid.lib;..\heclib\nws_shef\$(Platform)\$(Configuration)\javaShefDssLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(IFORT_COMPILER19)compiler\lib\ia32_win\</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -146,12 +145,14 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\heclib\heclib\headers;..\heclib\heclib\headers\zlib;..\heclib\heclib\grid;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>..\heclib\heclib\heclib_c_v6v7\$(Platform)\$(Configuration)\heclib_c_v6v7.lib;..\heclib\heclib\heclib_f_v6v7\$(Platform)\$(Configuration)\heclib_f_v6v7.lib;..\heclib\zlib\$(Platform)\zlibstatic.lib;..\heclib\heclib\grid\$(Platform)\$(Configuration)\grid.lib;..\heclib\nws_shef\$(Platform)\$(Configuration)\javaShefDssLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -165,14 +166,14 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\heclib\headers;..\..\heclib\headers\zlib;..\..\heclib\grid;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\heclib\heclib\headers;..\heclib\heclib\headers\zlib;..\heclib\heclib\grid;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\..\heclib\heclib_c_v6v7\$(Platform)\$(Configuration)\heclib_c_v6v7.lib;..\..\heclib\heclib_f_v6v7\$(Platform)\$(Configuration)\heclib_f_v6v7.lib;..\..\zlib\$(Platform)\zlibstatic.lib;..\..\heclib\grid\$(Platform)\Debug\grid.lib;..\..\nws_shef\$(Platform)\$(Configuration)\javaShefDssLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\heclib\heclib\heclib_c_v6v7\$(Platform)\$(Configuration)\heclib_c_v6v7.lib;..\heclib\heclib\heclib_f_v6v7\$(Platform)\$(Configuration)\heclib_f_v6v7.lib;..\heclib\zlib\$(Platform)\zlibstatic.lib;..\heclib\heclib\grid\$(Platform)\$(Configuration)\grid.lib;..\heclib\nws_shef\$(Platform)\$(Configuration)\javaShefDssLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(IFORT_COMPILER19)compiler\lib\intel64_win\</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -216,7 +217,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Version.cpp" />
     <ClCompile Include="workshop.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>

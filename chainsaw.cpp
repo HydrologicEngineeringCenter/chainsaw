@@ -123,11 +123,7 @@ int main(int argc, char **argv)
 	}
 	else if (args.size() == 2 && args[1] == "version")
 	{
-		Version::printVersion();
-	}
-	else if (args.size() == 3 && args[1] == "updateVersion") {
-		Version tempVersion = Version();
-		tempVersion.updateVersion(argv[2]);
+		cout << DSS_VERSION << endl;
 	}
 	else if (args.size() == 7 && args[1] =="import-shef") // file.dss input.shef shefParmFile sensorFile parameterFile
 	{

@@ -101,7 +101,16 @@ int DssDatabase::InsertIrregular(string path, string date, double val)
 	int itimes[1];
 	int status = -1;
 	dvalues[0] = val;
-	zStructTimeSeries *tss = zstructTsNewIrregDoubles(path.c_str(), dvalues, 1, itimes, MINUTE_GRANULARITY, "", "", "INST-VAL");
+	int timeGranularitySeconds = MINUTE_GRANULARITY;
+	zStructTimeSeries *tss1 = zstructTsNew(path.c_str());
+	status = ztsRetrieve(ifltab, tss1, 0, 1, 0);
+	if (status == 0)
+	{ // use existing granularity
+		timeGranularitySeconds = tss1->timeGranularitySeconds;
+	}
+	zstructFree(tss1);
+
+	zStructTimeSeries *tss = zstructTsNewIrregDoubles(path.c_str(), dvalues, 1, itimes, timeGranularitySeconds, "", "", "INST-VAL");
 
 	itimes[0] = dateToJulian(date.c_str());
 	if (itimes[0] != UNDEFINED_TIME)
@@ -112,6 +121,7 @@ int DssDatabase::InsertIrregular(string path, string date, double val)
 		int storageFlag_merge = 0; // adding new data
 		status = ztsStore(ifltab, tss, storageFlag_merge);
 	}
+	zstructFree(tss);
 	return status;
 }
 
@@ -152,7 +162,7 @@ void DssDatabase::PrintTimeSeriesToConsole(std::string &path)
 	tss->numberValues = 9000;
 	int retrieveDoublesFlag = 1; // 0 for as stored  ,  1 for floats,  2 for doubles.
 	int boolRetrieveQualityNotes = 0;
-	int retrieveFlag = -2; //
+	int retrieveFlag = 0;// -2; //
 	int status = ztsRetrieve(ifltab, tss, retrieveFlag, retrieveDoublesFlag, boolRetrieveQualityNotes);
 	//int status = ztsRetrieve(ifltab, tss, -1, 1, 0);
 
@@ -163,14 +173,15 @@ void DssDatabase::PrintTimeSeriesToConsole(std::string &path)
 	}
 
 	char cdate[13], ctime[10];
-	int valueTime = tss->startTimeSeconds;
+	//int valueTime = tss->startTimeSeconds;
 
 	bool isFloat = tss->floatValues != 0;
+	bool foundData = false;
 
 	for (int i = 0; i < tss->numberValues; i++) {
 		double val = 0;
 		bool missing = false;
-		getDateAndTime(valueTime, SECOND_GRANULARITY, tss->startJulianDate,
+		getDateAndTime(tss->times[i], tss->timeGranularitySeconds, tss->julianBaseDate,
 			cdate, sizeof(cdate), ctime, sizeof(ctime));
 		if (isFloat)
 		{
@@ -182,15 +193,22 @@ void DssDatabase::PrintTimeSeriesToConsole(std::string &path)
 		{
 			val = tss->doubleValues[i];
 			if (val == zmissingFlagDouble())
-				missing = false;
+				missing = true;
 		}
+
+		if (missing && !foundData)
+			continue;
+
 		if (missing)
 			printf("%s %s, \n", cdate, ctime);
 		else
+		{
 			printf("%s %s, %f\n", cdate, ctime, val);
+			foundData = true;
+		}
 
 
-		valueTime += tss->timeIntervalSeconds;
+		//valueTime += tss->timeIntervalSeconds;
 	}
 }
 

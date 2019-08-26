@@ -3,7 +3,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LocalDebuggerWorkingDirectory>c:\temp\windows\</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommandArguments>insert c:\temp\karl.dss /River/Q//IR-Century/test/  01/01/-10000  123.456 </LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>tabulate c:\temp\dot_net_ReadWriteSecondRegular.dss /dotnet/csharp/values/01Jan1965/1Second//</LocalDebuggerCommandArguments>
   </PropertyGroup>
   <PropertyGroup>
     <ShowAllFiles>false</ShowAllFiles>

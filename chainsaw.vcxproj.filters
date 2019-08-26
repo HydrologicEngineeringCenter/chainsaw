@@ -71,9 +71,6 @@
     <ClCompile Include="workshop.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Version.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="examples.txt" />
