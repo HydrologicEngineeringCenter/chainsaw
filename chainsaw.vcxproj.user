@@ -3,14 +3,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LocalDebuggerWorkingDirectory>c:\temp\windows\</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommandArguments>tabulate c:\temp\dot_net_ReadWriteSecondRegular.dss /dotnet/csharp/values/01Jan1965/1Second//</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>tabulate  c:\temp\MoRiverObs.dss "/CHARITON RIVER/PRAIRIE HILL, MO/FLOW//15MIN/USGS/" 01Sep2008:2400 10Oct2008:2400</LocalDebuggerCommandArguments>
   </PropertyGroup>
   <PropertyGroup>
     <ShowAllFiles>false</ShowAllFiles>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LocalDebuggerCommandArguments>test 7 read write</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>tabulate  c:\temp\MoRiverObs.dss "/CHARITON RIVER/PRAIRIE HILL, MO/FLOW//15MIN/USGS/" 01Sep2008:2400 10Oct2008:2400</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
     <LocalDebuggerWorkingDirectory>c:\temp\windows</LocalDebuggerWorkingDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LocalDebuggerCommandArguments>tabulate  c:\temp\MoRiverObs.dss "/CHARITON RIVER/PRAIRIE HILL, MO/FLOW//15MIN/USGS/" 01Sep2008:2400 10Oct2008:2400</LocalDebuggerCommandArguments>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LocalDebuggerCommandArguments>tabulate  c:\temp\MoRiverObs.dss "/CHARITON RIVER/PRAIRIE HILL, MO/FLOW//15MIN/USGS/" 01Sep2008:2400 10Oct2008:2400</LocalDebuggerCommandArguments>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

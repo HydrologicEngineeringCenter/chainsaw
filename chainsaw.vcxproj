@@ -23,32 +23,32 @@
     <ProjectGuid>{038B6D35-2C8F-4E47-A338-45C057D73DF9}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>chainsaw</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -107,7 +107,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\heclib\heclib\heclib_c_v6v7\$(Platform)\$(Configuration)\heclib_c_v6v7.lib;..\heclib\heclib\heclib_f_v6v7\$(Platform)\$(Configuration)\heclib_f_v6v7.lib;..\heclib\zlib\$(Platform)\zlibstatic.lib;..\heclib\heclib\grid\$(Platform)\$(Configuration)\grid.lib;..\heclib\nws_shef\$(Platform)\$(Configuration)\javaShefDssLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\heclib\heclib\heclib_c_v6v7\$(Platform)\$(Configuration)\heclib_c_v6v7.lib;..\heclib\heclib\heclib_f_v6v7\$(Platform)\$(Configuration)\heclib_f_v6v7.lib;..\heclib\lib\$(Platform)\zlibstatic.lib;..\heclib\heclib\grid\$(Platform)\$(Configuration)\grid.lib;..\heclib\nws_shef\$(Platform)\$(Configuration)\javaShefDssLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(IFORT_COMPILER19)compiler\lib\intel64_win\</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>LIBCMTD;LIBCMT</IgnoreSpecificDefaultLibraries>
     </Link>
@@ -130,7 +130,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\heclib\heclib\heclib_c_v6v7\$(Platform)\$(Configuration)\heclib_c_v6v7.lib;..\heclib\heclib\heclib_f_v6v7\$(Platform)\$(Configuration)\heclib_f_v6v7.lib;..\heclib\zlib\$(Platform)\zlibstatic.lib;..\heclib\heclib\grid\$(Platform)\$(Configuration)\grid.lib;..\heclib\nws_shef\$(Platform)\$(Configuration)\javaShefDssLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\heclib\heclib\heclib_c_v6v7\$(Platform)\$(Configuration)\heclib_c_v6v7.lib;..\heclib\heclib\heclib_f_v6v7\$(Platform)\$(Configuration)\heclib_f_v6v7.lib;..\heclib\lib\$(Platform)\zlibstatic.lib;..\heclib\heclib\grid\$(Platform)\$(Configuration)\grid.lib;..\heclib\nws_shef\$(Platform)\$(Configuration)\javaShefDssLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(IFORT_COMPILER19)compiler\lib\ia32_win\</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -152,7 +152,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\heclib\heclib\heclib_c_v6v7\$(Platform)\$(Configuration)\heclib_c_v6v7.lib;..\heclib\heclib\heclib_f_v6v7\$(Platform)\$(Configuration)\heclib_f_v6v7.lib;..\heclib\zlib\$(Platform)\zlibstatic.lib;..\heclib\heclib\grid\$(Platform)\$(Configuration)\grid.lib;..\heclib\nws_shef\$(Platform)\$(Configuration)\javaShefDssLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\heclib\heclib\heclib_c_v6v7\$(Platform)\$(Configuration)\heclib_c_v6v7.lib;..\heclib\heclib\heclib_f_v6v7\$(Platform)\$(Configuration)\heclib_f_v6v7.lib;..\heclib\lib\$(Platform)\zlibstatic.lib;..\heclib\heclib\grid\$(Platform)\$(Configuration)\grid.lib;..\heclib\nws_shef\$(Platform)\$(Configuration)\javaShefDssLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -173,7 +173,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\heclib\heclib\heclib_c_v6v7\$(Platform)\$(Configuration)\heclib_c_v6v7.lib;..\heclib\heclib\heclib_f_v6v7\$(Platform)\$(Configuration)\heclib_f_v6v7.lib;..\heclib\zlib\$(Platform)\zlibstatic.lib;..\heclib\heclib\grid\$(Platform)\$(Configuration)\grid.lib;..\heclib\nws_shef\$(Platform)\$(Configuration)\javaShefDssLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\heclib\heclib\heclib_c_v6v7\$(Platform)\$(Configuration)\heclib_c_v6v7.lib;..\heclib\heclib\heclib_f_v6v7\$(Platform)\$(Configuration)\heclib_f_v6v7.lib;..\heclib\lib\$(Platform)\zlibstatic.lib;..\heclib\heclib\grid\$(Platform)\$(Configuration)\grid.lib;..\heclib\nws_shef\$(Platform)\$(Configuration)\javaShefDssLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(IFORT_COMPILER19)compiler\lib\intel64_win\</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>

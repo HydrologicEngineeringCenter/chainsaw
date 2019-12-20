@@ -1,8 +1,12 @@
 
 test 7 read write
 
+info c:\temp\sample6.dss //SACRAMENTO/PRECIP-INC/01Jan1877/1Day/OBS/
+info c:\temp\sample7_units_xyz.dss //SACRAMENTO/PRECIP-INC/01Jan1877/1Day/OBS/
 tabulate c:\temp\dot_net_ReadWriteSecondRegular.dss /dotnet/csharp/values/01Jan1965/1Second//
-
+tabulate c:\temp\dot_net_ReadWriteSecondIrregular.dss /dotnet/csharp/values//~1Second//
+ 
+tabulate  c:\temp\MoRiverObs.dss "/CHARITON RIVER/PRAIRIE HILL, MO/FLOW//15MIN/USGS/" 01Sep2008:2400 10Oct2008:2400
 
 tabulate c:\temp\test1.dss /a/b/c/01jan2001:1200/01jan2001:1300/f/
 tabulate c:\temp\windows\radar_utm.dss /UTM16N/PISTOL/PRECIP/05MAY2003:1100/05MAY2003:1200/RADAR/

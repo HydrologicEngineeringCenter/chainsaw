@@ -24,6 +24,7 @@ DssDatabase::DssDatabase(string filename)
 
 	int status = 0;
 	m_filename = filename;
+	//zsetMessageLevel(1, 0);
 	 status = zopen(ifltab, filename.c_str());
 	if (status != 0)
 	{
@@ -69,7 +70,64 @@ void DssDatabase::Catalog()
 	}
 }
 
-void DssDatabase::Tabulate(string path,string startDate, string startTime)
+/*
+prints out details for the record, without reading the whole data set.
+*/
+void DssDatabase::Info(string path)
+{
+	zStructRecordSize *rs = GetRecordSize(path);
+
+	cout << " internalHeaderNumber (size of 3 arrays): " << rs->internalHeaderNumber << endl;
+
+	zstructFree(rs);
+
+	zStructTimeSeries* tss;
+	zStructTransfer* transfer;
+
+	transfer = zstructTransferNew(path.c_str(), 0);
+
+	transfer->internalHeaderMode = 1;
+
+
+	int status = zread(ifltab, transfer);
+	tss = zstructTsNew(transfer->pathname);
+	ztsProcessTimes(ifltab, tss, 0);
+	status = ztsInternalHeaderUnpack(tss, transfer->internalHeader, transfer->internalHeaderNumber);
+	printf("transfer->dataType = %d\n", transfer->dataType);
+	printf("units = %s\n", tss->units);
+	printf("type = %s\n", tss->type);
+	zstructFree(transfer);
+	zstructFree(tss);
+
+
+
+
+}
+
+zStructRecordSize* DssDatabase::GetRecordSize(string path)
+{
+	//int zgetRecordAddresses(long long *ifltab, const char *pathname, zStructRecordAddresses *recordInfo)
+//	zStructRecordAddresses* recordInfo = zStructRecordAddresses
+
+
+	zStructRecordSize *rs = zstructRecordSizeNew(path.c_str());
+
+	int status = zgetRecordSize(ifltab, rs);
+	if (status != 0)
+	{
+		cout << "Error:  Could not find path:'" << path << "'" << endl;
+		zstructFree(rs);
+		return 0;
+	}
+	return rs;
+}
+
+/*
+	path = dss path
+	startTime/endtime format:   02Jan2001:1400
+
+*/
+void DssDatabase::Tabulate(string path,string startTime, string endTime)
 {
 
 	zStructRecordSize *rs = zstructRecordSizeNew(path.c_str());
@@ -78,14 +136,15 @@ void DssDatabase::Tabulate(string path,string startDate, string startTime)
 	if (status != 0)
 	{
 		cout << "Error:  Could not find path:'" << path << "'"<< endl;
-		return;
+		PrintTimeSeriesToConsole(path, startTime, endTime);
+//		return;
 	}
 
 	cout << "dataType = " << rs->dataType << endl;
 
 		if ((rs->dataType >= DATA_TYPE_RTS) && (rs->dataType < DATA_TYPE_PD))
 		{ // time series
-			PrintTimeSeriesToConsole(path);
+			PrintTimeSeriesToConsole(path,startTime, endTime);
 		}
 		if ((rs->dataType >= DATA_TYPE_UGT) && (rs->dataType < DATA_TYPE_SG))
 		{
@@ -152,12 +211,26 @@ void DssDatabase::PrintGridToConsole(std::string &path)
 	}
 }
 
-void DssDatabase::PrintTimeSeriesToConsole(std::string &path)
+void DssDatabase::PrintTimeSeriesToConsole(std::string &path, string startTime, string endTime)
 {
+	string date1 = "";
+	string date2 = "";
 
+	string time1 = "";
+	string time2 = "";
+	if (startTime != "" && endTime != "")
+	{
+		size_t idx = startTime.find(':');
+		date1 = startTime.substr(0, idx);
+		time1 = startTime.substr(idx + 1);
+		idx = endTime.find(':');
+		date2 = endTime.substr(0, idx);
+		time2 = endTime.substr(idx + 1);
+
+	}
 	//zStructTimeSeries *tss = zstructTsNewTimes(path.c_str(), startDate.c_str(), startTime.c_str(), "", "");
 	//zStructTimeSeries *tss = zstructTsNewTimes(path.c_str(), "01Jan1877", "0100", "31Dec1878", "2400");
-	zStructTimeSeries *tss = zstructTsNewTimes(path.c_str(), "", "", "", "");
+	zStructTimeSeries *tss = zstructTsNewTimes(path.c_str(), date1.c_str(), time1.c_str(),date2.c_str(), time2.c_str());
 
 	tss->numberValues = 9000;
 	int retrieveDoublesFlag = 1; // 0 for as stored  ,  1 for floats,  2 for doubles.
@@ -183,7 +256,7 @@ void DssDatabase::PrintTimeSeriesToConsole(std::string &path)
 		bool missing = false;
 		getDateAndTime(tss->times[i], tss->timeGranularitySeconds, tss->julianBaseDate,
 			cdate, sizeof(cdate), ctime, sizeof(ctime));
-		if (isFloat)
+ 		if (isFloat)
 		{
 			val = tss->floatValues[i];
 			if (val == zmissingFlagFloat())

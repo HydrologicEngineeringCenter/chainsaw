@@ -38,7 +38,8 @@ void Usage(vector<string> args)
 	cout << args[0] << " dump filename.dss " << endl;
 	cout << args[0] << " squeeze filename.dss " << endl;
 	cout << args[0] << " catalog filename.dss " << endl;
-	cout << args[0] << " tabulate filename.dss path" << endl;
+	cout << args[0] << " info filename.dss path "<<endl; 
+	cout << args[0] << " tabulate filename.dss path  [t1  t2]" << endl;
 	cout << args[0] << " insert filename.dss path date value" << endl;
 	cout << args[0] << " workshop " << endl;
 	cout << args[0] << " import-shef file.dss input.shef shefParmFile sensorFile parameterFile  " << endl;
@@ -53,6 +54,8 @@ void Usage(vector<string> args)
 	cout << "               -- test 6 read write  # runs cross-platform tests on dss version 6 (read and write)" << endl;
 	cout << "               -- test 7 write  # runs cross-platform tests on version 7 (write)" << endl;
 	cout << "               -- test read  # runs cross-platform tests (read)" << endl;
+	cout << "               -- tabulate  c:\temp\MoRiverObs.dss \" /CHARITON RIVER/PRAIRIE HILL, MO/FLOW//15MIN/USGS/\" 01Sep2008:2400 10Oct2008:2400" << endl;
+
 }
 
 bool hasArg(vector<string> args, string arg)
@@ -95,14 +98,31 @@ int main(int argc, char **argv)
 
 		db.Catalog();
 	}
-	else if (args.size() == 4 && args[1] == "tabulate")
+	else if ((args.size() == 4 || args.size() == 6) && args[1] == "tabulate")
 	{  // exe  tabulate sample7.dss //SACRAMENTO/PRECIP-INC/01Jan1877/1Day/OBS/ 
 		std::string fn = string(args[2]);
 		std::string path = string(args[3]);
+		std::string startTime = "";
+		std::string  endTime = "";
+
+		if (args.size() == 6)
+		{
+			startTime = string(args[4]);
+			endTime = string(args[5]);
+		}
 
 		DssDatabase db = DssDatabase(fn);
 
-		db.Tabulate(path,"","");
+		db.Tabulate(path,startTime,endTime);
+	}
+
+	else if (args.size() == 4 && args[1] == "info")
+	{  	//info c:\temp\sample7_units_xyz.dss //SACRAMENTO/PRECIP-INC/01Jan1877/1Day/OBS/
+		std::string fn = string(args[2]);
+		std::string path = string(args[3]);
+		DssDatabase db = DssDatabase(fn);
+
+		db.Info(path);
 	}
 	else if (args.size() == 6 && args[1] == "insert")
 	{  // exe  insert sample7.dss /River/Q//IR-Century/test/  01/01/-10000  123.456 
